@@ -18,3 +18,4 @@ def verschil(lijst):
             x=z
     print(x)
 verschil(lijst)
+a
