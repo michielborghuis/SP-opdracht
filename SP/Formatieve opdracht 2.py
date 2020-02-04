@@ -10,3 +10,4 @@ def verschil(index):
     else:
         print('Het eerste verschil zit bij index: '+str(index))
 verschil(index)
+print
