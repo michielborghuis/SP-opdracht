@@ -25,5 +25,3 @@ for i in range(int(input)):
     space+=1
     x-=1
     print(' '*space+'*'*x)
-
-print('suck')
