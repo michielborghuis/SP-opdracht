@@ -31,3 +31,4 @@ def goed(lijst):
     else:
         return print('De lijst voldoet aan alle eisen')
 goed(lijst3)
+a
