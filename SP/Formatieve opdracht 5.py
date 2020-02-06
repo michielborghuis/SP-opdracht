@@ -9,3 +9,5 @@ def sorteren(lijst):
                 x = 0
     return print(lijst)
 sorteren(lijst)
+
+#Bron: https://stackoverflow.com/questions/43809693/how-do-you-sort-a-list-with-a-while-loop-in-python
