@@ -7,18 +7,27 @@ while cijfer > 26:
 
 for i in tekst:
     lower=0
-    if i==' ' or i=='.' or i=='!' or i=='?' or i==',':
-        code=code+i
-    else:
-        if i not in alfa:
+    if i not in alfa:
+        try:
             i=i.lower()
             lower=1
-        x=alfa.index(i)
-        z=x+cijfer
-        y=alfa[z]
-        if lower==1:
-            code=code+y.upper()
+            x = alfa.index(i)
+            z = x + cijfer
+            y = alfa[z]
+            if lower == 1:
+                code = code + y.upper()
+            else:
+                code = code + y
+            lower = 0
+        except ValueError:
+            code=code+i
+    else:
+        x = alfa.index(i)
+        z = x + cijfer
+        y = alfa[z]
+        if lower == 1:
+            code = code + y.upper()
         else:
-            code=code+y
-        lower=0
+            code = code + y
+        lower = 0
 print('Ceadercode: '+str(code))
