@@ -6,6 +6,7 @@ def gemiddelde(lijst):
     gem= som/aantal
     return print(gem)
 gemiddelde(lijst)
+#bron: practicum_2_statistiek_student.py (mijn ask opdracht voor practicum 2)
 
 def gemlist(lijst):
     for i in lijst:
