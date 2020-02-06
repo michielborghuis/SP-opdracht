@@ -5,3 +5,5 @@ def verschuiven(ch,n):
     y=ch[:n]
     return x+y
 print(verschuiven(str(ch), n))
+
+#Bron: Storm Joannes heeft me wat tips gegeven met ch[n:]
