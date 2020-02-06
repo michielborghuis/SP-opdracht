@@ -9,5 +9,3 @@ def sorteren(lijst):
                 x = 0
     return print(lijst)
 sorteren(lijst)
-
-#Bron: practicum_4_algoritmiek_student.py (deel van mijn aks opdracht van practicum 4)
