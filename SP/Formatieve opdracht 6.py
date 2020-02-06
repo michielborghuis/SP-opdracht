@@ -11,3 +11,4 @@ def gemlist(lijst):
     for i in lijst:
         gemiddelde(i)
 gemlist(lijst2)
+a
