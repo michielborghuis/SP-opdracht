@@ -15,5 +15,3 @@ def palindroom2(woord):
     else:
         print('Dit woord is geen palindroom')
 palindroom2('reinier')
-
-a
