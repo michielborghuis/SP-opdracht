@@ -7,7 +7,7 @@ while cijfer > 26:
 
 for i in tekst:
     lower=0
-    if i==' ' or i=='.' or i=='!' or i=='?':
+    if i==' ' or i=='.' or i=='!' or i=='?' or i==',':
         code=code+i
     else:
         if i not in alfa:
