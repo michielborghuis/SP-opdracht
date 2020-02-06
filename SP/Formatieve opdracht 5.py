@@ -9,4 +9,3 @@ def sorteren(lijst):
                 x = 0
     return print(lijst)
 sorteren(lijst)
-a
