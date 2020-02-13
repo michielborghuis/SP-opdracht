@@ -24,21 +24,26 @@ def gamemode():
 
 def gamemode_keuze():
     if gamemode() == 'maken':
-        code_maken()
+        code_maken(kleuren)
     else:
         code_raden()
 
-def code_maken():
-    kleuren = ['zwart', 'wit', 'rood', 'geel', 'blauw', 'groen']
+kleuren = ['zwart', 'wit', 'rood', 'geel', 'blauw', 'groen']
+
+def code_maken(kleuren):
     print('\nKies een code van 4 kleuren. De kleuren waar je uit kunt kiezen is: zwart, wit, rood, geel, blauw en groen.')
     kleur1 = input('Voer kleur 1 in: ').lower()
-    opnieuw(kleuren, kleur1, 'Voer kleur 1 in: ')
+    if kleur1 not in kleuren:
+        kleur1 = opnieuw(kleuren, kleur1, 'Voer kleur 1 in: ')
     kleur2 = input('Voer kleur 2 in: ').lower()
-    opnieuw(kleuren, kleur2, 'Voer kleur 2 in: ')
+    if kleur2 not in kleuren:
+        kleur2 = opnieuw(kleuren, kleur2, 'Voer kleur 2 in: ')
     kleur3 = input('Voer kleur 3 in: ').lower()
-    opnieuw(kleuren, kleur3, 'Voer kleur 3 in: ')
+    if kleur3 not in kleuren:
+        kleur3 = opnieuw(kleuren, kleur3, 'Voer kleur 3 in: ')
     kleur4 = input('Voer kleur 4 in: ').lower()
-    opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
+    if kleur4 not in kleuren:
+        kleur4 = opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
 
 def code_raden():
     input('Klik op enter om het spel te beginnen.')
@@ -52,51 +57,59 @@ def code_raden():
 
     print('\nDe computer heeft een code gegenereerd.\nDoe je eerste poging. De kleuren waar je uit kunt kiezen is: zwart, wit, rood, geel, blauw en groen.')
 
-    goed = ['zwarte pion', 'zwarte pion', 'zwarte pion', 'zwarte pion']
     poging = 1
-    pogingen(poging, gekozenkleuren, kleuren, goed)
 
-def pogingen(poging, gekozenkleuren, kleuren, goed):
-    terug = opnieuw_raden(gekozenkleuren, kleuren)
-    if terug[1] == goed:
-        return print('Gefeliciteerd! Je heb de code goed geraden in '+str(poging)+' poging(en).')
-    else:
-        print(str(terug[1]))
-        print('\nJe hebt '+str(poging)+' poging(en) gedaan. Je hebt nog '+str(10-poging)+' poging(en) om de code goed te raden.')
-        poging+=1
-        return pogingen(poging, gekozenkleuren, kleuren, goed)
-
-def opnieuw_raden(gekozenkleuren, kleuren):
     keuze = raden_keuze(kleuren)
-    lijst=[]
-    back = feedback(gekozenkleuren, keuze, lijst)
-    return keuze, back
+    while True:
+        if keuze == gekozenkleuren:
+            print('Gefeliciteerd! Je hebt de code in '+str(poging)+' keer geraden')
+            break
+        elif poging >= 10:
+            print('Helaas. Je hebt de code niet in 10 keer kunnen kraken.')
+            break
+        else:
+            terug = feedback(gekozenkleuren, keuze)
+            print('Je hebt '+str(terug[0])+' kleuren op de goede plek en '+str(terug[1])+' kleuren zitten in de code maar niet op de goede plek.')
+            print('\nJe hebt ' + str(poging) + ' poging(en) gedaan. Je hebt nog ' + str(10 - poging) + ' poging(en) om de code goed te raden.')
+            poging += 1
+            keuze = raden_keuze(kleuren)
 
-def feedback(gekozenkleuren, keuze, lijst):
+def feedback(gekozenkleuren, keuze):
     kleuren = gekozenkleuren
     index=0
+    goed = 0
+    goedeplek = 0
     for i in kleuren:
         if i == keuze[index]:
-            lijst.append('zwarte pion')
-            index+=1
-        elif keuze[index] in gekozenkleuren:
-            lijst.append('witte pion')
-            index+=1
+            goed+=1
+            kleuren[index]='niks'
+            index += 1
         else:
             index+=1
-    random.shuffle(lijst)
-    return lijst
+    index=0
+    for i in range(len(kleuren)):
+        if keuze[index] in kleuren:
+            goedeplek+=1
+            kleuren[index]='nada'
+            index += 1
+        else:
+            index+=1
+    return goed, goedeplek
 
-def raden_keuze(lijst):
+def raden_keuze(lijst,):
     keuze1 = input('Voer kleur 1 in: ').lower()
-    opnieuw(lijst, keuze1, 'Voer kleur 1 in: ')
+    if keuze1 not in lijst:
+        keuze1 = opnieuw(lijst, keuze1, 'Voer kleur 1 in: ')
     keuze2 = input('Voer kleur 2 in: ').lower()
-    opnieuw(lijst, keuze2, 'Voer kleur 2 in: ')
+    if keuze2 not in lijst:
+        keuze2 = opnieuw(lijst, keuze2, 'Voer kleur 2 in: ')
     keuze3 = input('Voer kleur 3 in: ').lower()
-    opnieuw(lijst, keuze3, 'Voer kleur 3 in: ')
+    if keuze3 not in lijst:
+        keuze3 = opnieuw(lijst, keuze3, 'Voer kleur 3 in: ')
     keuze4 = input('Voer kleur 4 in: ').lower()
-    opnieuw(lijst, keuze4, 'Voer kleur 4 in: ')
-    return keuze1, keuze2, keuze3, keuze4
+    if keuze4 not in lijst:
+        keuze4 = opnieuw(lijst, keuze4, 'Voer kleur 4 in: ')
+    return [keuze1, keuze2, keuze3, keuze4]
 
 def opnieuw(lijst, test, Input):
     while test not in lijst:
@@ -107,5 +120,12 @@ def opnieuw(lijst, test, Input):
 def go():
     gespeeld()
     gamemode_keuze()
-
 code_raden()
+
+combo=[]
+
+for i in kleuren:
+    for x in kleuren:
+        for y in kleuren:
+            for z in kleuren:
+                combo.append([i,x,y,z])
