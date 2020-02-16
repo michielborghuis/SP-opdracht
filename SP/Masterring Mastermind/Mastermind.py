@@ -149,4 +149,4 @@ def go():
     gespeeld()
     gamemode_keuze()
 
-code_maken(kleuren)
+go()
