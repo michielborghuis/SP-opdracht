@@ -2,6 +2,7 @@ import time
 import random
 from Algoritmes import *
 print('Welkom bij het spel Mastermind')
+time.sleep(1.5)
 
 def gespeeld():
     J=['j', 'n']
@@ -11,7 +12,7 @@ def gespeeld():
         spelregels=input('Wil je de spelregels weten? J/N: ').lower()
         opnieuw(J, spelregels, 'Wil je de spelregels weten? J/N: ')
         if spelregels == 'j':
-            print('Dit zijn de spelregels van Mastermind:')
+            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?')
 
 def gamemode():
     mode=['m','r']
@@ -25,9 +26,12 @@ def gamemode():
         return 'raden'
 
 def gamemode_keuze():
+    time.sleep(0.5)
     if gamemode() == 'maken':
+        time.sleep(2)
         code_maken(kleuren)
     else:
+        time.sleep(2)
         code_raden()
 
 kleuren = ['zwart', 'wit', 'rood', 'geel', 'blauw', 'groen']
@@ -48,9 +52,18 @@ def code_maken(kleuren):
         kleur4 = opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
     gekozenkleuren = [kleur1, kleur2, kleur3, kleur4]
 
-    antwoord = algoritme1(kleuren, gekozenkleuren, feedback)
+    rader = [algoritme1, algoritme2]
+
+    eentotdrie = random.choice(rader)
+
+    antwoord = eentotdrie(kleuren, gekozenkleuren, feedback)
+
     time.sleep(3)
-    print('De computer heeft je code: '+str(antwoord[0][0])+', '+str(antwoord[0][1])+', '+str(antwoord[0][2])+', '+str(antwoord[0][3])+' geraden in '+str(antwoord[1])+' pogingen')
+
+    if antwoord[1] > 10:
+        print('\nGefeliciteerd!\nJe hebt de computer verslagen.')
+    else:
+        print('\nHelaas!\nDe computer heeft je code: '+str(antwoord[0][0])+', '+str(antwoord[0][1])+', '+str(antwoord[0][2])+', '+str(antwoord[0][3])+' geraden in '+str(antwoord[1])+' pogingen.')
 
 def code_raden():
     input('Klik op enter om het spel te beginnen.')
@@ -69,7 +82,7 @@ def code_raden():
     keuze = raden_keuze(kleuren)
     while True:
         if keuze == gekozenkleuren:
-            print('Gefeliciteerd! Je hebt de code in '+str(poging)+' keer geraden')
+            print('Gefeliciteerd! Je hebt de code in '+str(poging)+' keer geraden.')
             break
         elif poging >= 10:
             print('Helaas. Je hebt de code niet in 10 keer kunnen kraken.')
@@ -136,15 +149,4 @@ def go():
     gespeeld()
     gamemode_keuze()
 
-def algoritme2():
-    combo = []
-
-    for i in kleuren:
-        for x in kleuren:
-            for y in kleuren:
-                for z in kleuren:
-                    combo.append([i, x, y, z])
-
 code_maken(kleuren)
-
-
