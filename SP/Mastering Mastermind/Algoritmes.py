@@ -13,7 +13,9 @@ def algoritme1(kleuren, gekozenkleuren, feedback):
 
     while len(combo) > 1:
         eerstegok = combo[0]
+
         print('In poging '+str(poging)+' gokt de computer dat de code '+str(eerstegok[0])+', '+str(eerstegok[1])+', '+str(eerstegok[2])+', '+str(eerstegok[3])+' is.')
+
         if eerstegok == gekozenkleuren:
             break
         else:
