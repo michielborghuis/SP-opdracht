@@ -1,4 +1,6 @@
+import time
 import random
+from Algoritmes import *
 print('Welkom bij het spel Mastermind')
 
 def gespeeld():
@@ -44,6 +46,11 @@ def code_maken(kleuren):
     kleur4 = input('Voer kleur 4 in: ').lower()
     if kleur4 not in kleuren:
         kleur4 = opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
+    gekozenkleuren = [kleur1, kleur2, kleur3, kleur4]
+
+    antwoord = algoritme1(kleuren, gekozenkleuren, feedback)
+    time.sleep(3)
+    print('De computer heeft je code: '+str(antwoord[0][0])+', '+str(antwoord[0][1])+', '+str(antwoord[0][2])+', '+str(antwoord[0][3])+' geraden in '+str(antwoord[1])+' pogingen')
 
 def code_raden():
     input('Klik op enter om het spel te beginnen.')
@@ -74,29 +81,37 @@ def code_raden():
             poging += 1
             keuze = raden_keuze(kleuren)
 
-def feedback(gekozenkleuren, keuze):
-    kleuren = gekozenkleuren
+def feedback(code, gok):
+    kleuren=[]
+    for i in code:
+        kleuren.append(i)
+    keuze=[]
+    for i in gok:
+        keuze.append(i)
+
     index=0
     goed = 0
-    goedeplek = 0
+    nietgoedeplek = 0
     for i in kleuren:
         if i == keuze[index]:
             goed+=1
-            kleuren[index]='niks'
+            kleuren[kleuren.index(keuze[index])] = 'niks'
+            keuze[index] = 'nope'
             index += 1
         else:
-            index+=1
+            index += 1
     index=0
     for i in range(len(kleuren)):
         if keuze[index] in kleuren:
-            goedeplek+=1
-            kleuren[index]='nada'
+            nietgoedeplek += 1
+            kleuren[kleuren.index(keuze[index])] = 'nada'
+            keuze[index] = 'doei'
             index += 1
         else:
             index+=1
-    return goed, goedeplek
+    return goed, nietgoedeplek
 
-def raden_keuze(lijst,):
+def raden_keuze(lijst):
     keuze1 = input('Voer kleur 1 in: ').lower()
     if keuze1 not in lijst:
         keuze1 = opnieuw(lijst, keuze1, 'Voer kleur 1 in: ')
@@ -120,12 +135,16 @@ def opnieuw(lijst, test, Input):
 def go():
     gespeeld()
     gamemode_keuze()
-code_raden()
 
-combo=[]
+def algoritme2():
+    combo = []
 
-for i in kleuren:
-    for x in kleuren:
-        for y in kleuren:
-            for z in kleuren:
-                combo.append([i,x,y,z])
+    for i in kleuren:
+        for x in kleuren:
+            for y in kleuren:
+                for z in kleuren:
+                    combo.append([i, x, y, z])
+
+code_maken(kleuren)
+
+
