@@ -36,7 +36,7 @@ def algoritme1(kleuren, gekozenkleuren, feedback):
 
 
 def algoritme2(kleuren, gekozenkleuren, feedback):
-    print('\nDe computer heeft gekozen voor algrotme 2.\nDe computer is de code aan het raden. Even geduld aub.')
+    print('\nDe computer heeft gekozen voor algoritme 2.\nDe computer is de code aan het raden. Even geduld aub.')
 
     poging = 1
     combo = []
@@ -110,7 +110,7 @@ def algoritme2(kleuren, gekozenkleuren, feedback):
     return combo[0], poging
 
 def algoritme3(kleuren, gekozenkleuren, feedback):
-    print('\nDe computer heeft gekozen voor algrotme 3.\nDe computer is de code aan het raden. Even geduld aub.')
+    print('\nDe computer heeft gekozen voor algoritme 3.\nDe computer is de code aan het raden. Even geduld aub.')
     poging = 1
     combo = []
 
