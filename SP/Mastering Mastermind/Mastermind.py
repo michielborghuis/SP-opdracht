@@ -5,19 +5,19 @@ print('Welkom bij het spel Mastermind')
 time.sleep(1.5)
 
 def gespeeld():
-    J=['j', 'n']
+    J = ['j', 'n']
     spel = input('Heb je het spel al eerder gespeeld? J/N: ').lower()
-    opnieuw(J, spel, 'Heb je het spel al eerder gespeel? J/N: ')
+    spel = opnieuw(J, spel, 'Heb je het spel al eerder gespeel? J/N: ')
     if spel == 'n':
-        spelregels=input('Wil je de spelregels weten? J/N: ').lower()
-        opnieuw(J, spelregels, 'Wil je de spelregels weten? J/N: ')
+        spelregels = input('Wil je de spelregels weten? J/N: ').lower()
+        spelregels = opnieuw(J, spelregels, 'Wil je de spelregels weten? J/N: ')
         if spelregels == 'j':
-            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?')
+            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?\n')
 
 def gamemode():
-    mode=['m','r']
-    keuze= input('Wil je een code maken of een code raden? M/R: ').lower()
-    opnieuw(mode, keuze, 'Wil je een code maken of een code raden? M/R: ')
+    mode = ['m','r']
+    keuze = input('Wil je een code maken of een code raden? M/R: ').lower()
+    keuze = opnieuw(mode, keuze, 'Wil je een code maken of een code raden? M/R: ')
     if keuze == 'm':
         print('Je hebt gekozen om een code te maken. De computer gaat de code proberen te raden.')
         return 'maken'
@@ -52,7 +52,7 @@ def code_maken(kleuren):
         kleur4 = opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
     gekozenkleuren = [kleur1, kleur2, kleur3, kleur4]
 
-    rader = [algoritme1, algoritme2]
+    rader = [algoritme1, algoritme2, algoritme3]
 
     eentotdrie = random.choice(rader)
 
@@ -73,7 +73,6 @@ def code_raden():
     kleur3 = kleuren[random.randint(0,5)]
     kleur4 = kleuren[random.randint(0,5)]
     gekozenkleuren = [kleur1, kleur2, kleur3, kleur4]
-    print(gekozenkleuren)
 
     print('\nDe computer heeft een code gegenereerd.\nDoe je eerste poging. De kleuren waar je uit kunt kiezen is: zwart, wit, rood, geel, blauw en groen.')
 
