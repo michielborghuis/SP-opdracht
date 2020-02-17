@@ -175,7 +175,6 @@ def algoritme3(kleuren, geheime_code, feedback):
         if bestcaseaantal == len(combinaties)-1:
             for code in eindlijst:
                 if code == geheime_code:
-                    poging+=1
                     print('In poging ' + str(poging) + ' gokt de computer dat de code ' + str(code[0]) + ', ' + str(code[1]) + ', ' + str(code[2]) + ', ' + str(code[3]) + ' is.')
                     return code, poging
 
