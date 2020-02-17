@@ -1,60 +1,60 @@
 import time
 import math
-def algoritme1(kleuren, gekozenkleuren, feedback):
+def algoritme1(alle_kleuren, geheime_code, feedback):
     print('\nDe computer heeft gekozen voor algoritme 1.\n')
-    combo = []
+    combinaties = []
     poging = 1
 
-    for i in kleuren:
-        for x in kleuren:
-            for y in kleuren:
-                for z in kleuren:
-                    combo.append([i, x, y, z])
-    combo.sort()
+    for i in alle_kleuren:
+        for x in alle_kleuren:
+            for y in alle_kleuren:
+                for z in alle_kleuren:
+                    combinaties.append([i, x, y, z])
+    combinaties.sort()
 
-    while len(combo) > 1:
-        eerstegok = combo[0]
+    while len(combinaties) > 1:
+        eerstegok = combinaties[0]
 
         print('In poging '+str(poging)+' gokt de computer dat de code '+str(eerstegok[0])+', '+str(eerstegok[1])+', '+str(eerstegok[2])+', '+str(eerstegok[3])+' is.')
 
-        if eerstegok == gekozenkleuren:
+        if eerstegok == geheime_code:
             break
         else:
-            terug = feedback(gekozenkleuren, eerstegok)
+            terug = feedback(geheime_code, eerstegok)
 
             opslag = []
 
-            for code in combo:
+            for code in combinaties:
                 x = feedback(eerstegok, code)
                 if x == terug:
                     opslag.append(code)
 
-            combo = opslag
+            combinaties = opslag
             poging += 1
         time.sleep(3)
-    return combo[0], poging
+    return combinaties[0], poging
 
 
-def algoritme2(kleuren, gekozenkleuren, feedback):
+def algoritme2(kleuren, geheime_code, feedback):
     print('\nDe computer heeft gekozen voor algoritme 2.\nDe computer is de code aan het raden. Even geduld aub.')
 
     poging = 1
-    combo = []
+    combinaties = []
 
     for i in kleuren:
         for x in kleuren:
             for y in kleuren:
                 for z in kleuren:
-                    combo.append([i, x, y, z])
-    combo.sort()
+                    combinaties.append([i, x, y, z])
+    combinaties.sort()
 
-    while len(combo) > 1:
-        antwoorden = [(0,0),(0,1),(0,2),(0,3),(0,4),(1,0),(1,1),(1,2),(1,3),(2,0),(2,1),(2,2),(3,0),(4,0)]
-        bestworstcase = [1000,'combo']
+    while len(combinaties) > 1:
+        antwoorden = [(0,0), (0,1), (0,2), (0,3), (0,4), (1,0), (1,1), (1,2), (1,3), (2,0), (2,1), (2,2), (3,0), (4,0)]
+        bestworstcase = [1000, 'combo']
 
-        for i in combo:
+        for i in combinaties:
             uitkomst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            for y in combo:
+            for y in combinaties:
                 x = feedback(y,i)
                 if x == antwoorden[0]:
                     uitkomst[0] += 1
@@ -94,41 +94,41 @@ def algoritme2(kleuren, gekozenkleuren, feedback):
 
         print('In poging ' + str(poging) + ' gokt de computer dat de code ' + str(eerstegok[0]) + ', ' + str(eerstegok[1]) + ', ' + str(eerstegok[2]) + ', ' + str(eerstegok[3]) + ' is.')
 
-        if eerstegok == gekozenkleuren:
+        if eerstegok == geheime_code:
             return eerstegok, poging
 
-        terug = feedback(gekozenkleuren, eerstegok)
+        terug = feedback(geheime_code, eerstegok)
 
-        for code in combo:
+        for code in combinaties:
             x = feedback(eerstegok, code)
             if x == terug:
                 opslag.append(code)
 
-        combo = opslag
+        combinaties = opslag
         poging += 1
         time.sleep(3)
-    return combo[0], poging
+    return combinaties[0], poging
 
-def algoritme3(kleuren, gekozenkleuren, feedback):
+def algoritme3(kleuren, geheime_code, feedback):
     print('\nDe computer heeft gekozen voor algoritme 3.\nDe computer is de code aan het raden. Even geduld aub.')
     poging = 1
-    combo = []
+    combinaties = []
 
     for i in kleuren:
         for x in kleuren:
             for y in kleuren:
                 for z in kleuren:
-                    combo.append([i, x, y, z])
-    combo.sort()
+                    combinaties.append([i, x, y, z])
+    combinaties.sort()
 
-    while len(combo) > 1:
+    while len(combinaties) > 1:
         antwoorden = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0), (4, 0)]
         bestworstcase = [1000, 'combo']
         eindlijst = []
-        for i in combo:
+        for i in combinaties:
             uitkomst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             bestcaseaantal=0
-            for y in combo:
+            for y in combinaties:
                 x = feedback(y, i)
                 if x == antwoorden[0]:
                     uitkomst[0] += 1
@@ -172,9 +172,9 @@ def algoritme3(kleuren, gekozenkleuren, feedback):
                 bestworstcase = maxi, i
                 bestcaseaantal+=1
                 eindlijst.append(i)
-        if bestcaseaantal == len(combo)-1:
+        if bestcaseaantal == len(combinaties)-1:
             for code in eindlijst:
-                if code == gekozenkleuren:
+                if code == geheime_code:
                     poging+=1
                     print('In poging ' + str(poging) + ' gokt de computer dat de code ' + str(code[0]) + ', ' + str(code[1]) + ', ' + str(code[2]) + ', ' + str(code[3]) + ' is.')
                     return code, poging
@@ -185,14 +185,14 @@ def algoritme3(kleuren, gekozenkleuren, feedback):
 
         print('In poging ' + str(poging) + ' gokt de computer dat de code ' + str(eerstegok[0]) + ', ' + str(eerstegok[1]) + ', ' + str(eerstegok[2]) + ', ' + str(eerstegok[3]) + ' is.')
 
-        terug = feedback(gekozenkleuren, eerstegok)
+        terug = feedback(geheime_code, eerstegok)
 
-        for code in combo:
+        for code in combinaties:
             x = feedback(eerstegok, code)
             if x == terug:
                 opslag.append(code)
 
-        combo = opslag
+        combinaties = opslag
         poging += 1
         time.sleep(3)
-    return combo[0], poging
+    return combinaties[0], poging

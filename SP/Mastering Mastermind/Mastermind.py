@@ -5,12 +5,12 @@ print('Welkom bij het spel Mastermind')
 time.sleep(1.5)
 
 def gespeeld():
-    J = ['j', 'n']
+    JaOfNee = ['j', 'n']
     spel = input('Heb je het spel al eerder gespeeld? J/N: ').lower()
-    spel = opnieuw(J, spel, 'Heb je het spel al eerder gespeel? J/N: ')
+    spel = opnieuw(JaOfNee, spel, 'Heb je het spel al eerder gespeel? J/N: ')
     if spel == 'n':
         spelregels = input('Wil je de spelregels weten? J/N: ').lower()
-        spelregels = opnieuw(J, spelregels, 'Wil je de spelregels weten? J/N: ')
+        spelregels = opnieuw(JaOfNee, spelregels, 'Wil je de spelregels weten? J/N: ')
         if spelregels == 'j':
             print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?\n')
 
@@ -52,9 +52,9 @@ def code_maken(kleuren):
         kleur4 = opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
     gekozenkleuren = [kleur1, kleur2, kleur3, kleur4]
 
-    rader = [algoritme1, algoritme2, algoritme3]
+    algoritme_kiezen = [algoritme1, algoritme2, algoritme3]
 
-    eentotdrie = random.choice(rader)
+    eentotdrie = random.choice(algoritme_kiezen)
 
     antwoord = eentotdrie(kleuren, gekozenkleuren, feedback)
 
@@ -102,11 +102,11 @@ def feedback(code, gok):
         keuze.append(i)
 
     index=0
-    goed = 0
+    goedeplek = 0
     nietgoedeplek = 0
     for i in kleuren:
         if i == keuze[index]:
-            goed+=1
+            goedeplek += 1
             kleuren[kleuren.index(keuze[index])] = 'niks'
             keuze[index] = 'nope'
             index += 1
@@ -121,7 +121,7 @@ def feedback(code, gok):
             index += 1
         else:
             index+=1
-    return goed, nietgoedeplek
+    return goedeplek, nietgoedeplek
 
 def raden_keuze(lijst):
     keuze1 = input('Voer kleur 1 in: ').lower()
