@@ -111,7 +111,7 @@ def algoritme2(kleuren, geheime_code, feedback):
 
 def algoritme3(kleuren, geheime_code, feedback):
     print('\nDe computer heeft gekozen voor algoritme 3.\nDe computer is de code aan het raden. Even geduld aub.')
-    poging = 1
+    poging = 0
     combinaties = []
 
     for i in kleuren:
@@ -120,6 +120,7 @@ def algoritme3(kleuren, geheime_code, feedback):
                 for z in kleuren:
                     combinaties.append([i, x, y, z])
     combinaties.sort()
+
 
     while len(combinaties) > 1:
         antwoorden = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0), (4, 0)]
@@ -175,13 +176,14 @@ def algoritme3(kleuren, geheime_code, feedback):
         if bestcaseaantal == len(combinaties)-1:
             for code in eindlijst:
                 if code == geheime_code:
+                    poging+=1
                     print('In poging ' + str(poging) + ' gokt de computer dat de code ' + str(code[0]) + ', ' + str(code[1]) + ', ' + str(code[2]) + ', ' + str(code[3]) + ' is.')
                     return code, poging
 
         opslag = []
 
         eerstegok = bestworstcase[1]
-
+        poging+=1
         print('In poging ' + str(poging) + ' gokt de computer dat de code ' + str(eerstegok[0]) + ', ' + str(eerstegok[1]) + ', ' + str(eerstegok[2]) + ', ' + str(eerstegok[3]) + ' is.')
 
         terug = feedback(geheime_code, eerstegok)
@@ -192,6 +194,5 @@ def algoritme3(kleuren, geheime_code, feedback):
                 opslag.append(code)
 
         combinaties = opslag
-        poging += 1
         time.sleep(3)
     return combinaties[0], poging
