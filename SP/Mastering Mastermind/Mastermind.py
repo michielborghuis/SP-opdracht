@@ -12,7 +12,11 @@ def gespeeld():
         spelregels = input('Wil je de spelregels weten? J/N: ').lower()
         spelregels = opnieuw(JaOfNee, spelregels, 'Wil je de spelregels weten? J/N: ')
         if spelregels == 'j':
-            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?\n')
+            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of 
+                  een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) 
+                  zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. 
+                  Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. 
+                  Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?\n')
 
 def gamemode():
     mode = ['m','r']
@@ -63,11 +67,11 @@ def code_maken(kleuren):
             for y in kleuren:
                 for z in kleuren:
                     allecombos.append([i, x, y, z])
-    allecombos.sort()
+    allecombos.sort()                                   #is sort nodig?
 
     algoritme_kiezen = [algoritme1, algoritme2, algoritme3]
 
-    eentotdrie = random.choice(algoritme_kiezen)
+    eentotdrie = random.choice(algoritme_kiezen) #optie voor kiezen van algoritme
 
     antwoord = eentotdrie(gekozenkleuren, feedback, allecombos)
 
@@ -76,7 +80,8 @@ def code_maken(kleuren):
     if antwoord[1] > 10:
         print('\nGefeliciteerd!\nJe hebt de computer verslagen.')
     else:
-        print('\nHelaas!\nDe computer heeft je code: '+str(antwoord[0][0])+', '+str(antwoord[0][1])+', '+str(antwoord[0][2])+', '+str(antwoord[0][3])+' geraden in '+str(antwoord[1])+' pogingen.')
+        print('\nHelaas!\nDe computer heeft je code: '+str(antwoord[0][0])+', '+str(antwoord[0][1])+', 
+              '+str(antwoord[0][2])+', '+str(antwoord[0][3])+' geraden in '+str(antwoord[1])+' pogingen.')
 
 def code_raden():
     input('Klik op enter om het spel te beginnen.')
@@ -101,7 +106,8 @@ def code_raden():
             break
         else:
             terug = feedback(gekozenkleuren, keuze)
-            print('Je hebt '+str(terug[0])+' kleuren op de goede plek en '+str(terug[1])+' kleuren zitten in de code maar niet op de goede plek.\nJe hebt ' + str(poging) + ' poging(en) gedaan. Je hebt nog ' + str(10 - poging) + ' poging(en) om de code goed te raden.')
+            print('Je hebt '+str(terug[0])+' kleuren op de goede plek en '+str(terug[1])+' kleuren zitten in de code maar niet op 
+                  de goede plek.\nJe hebt ' + str(poging) + ' poging(en) gedaan. Je hebt nog ' + str(10 - poging) + ' poging(en) om de code goed te raden.')
             poging += 1
             keuze = raden_keuze(kleuren)
 
