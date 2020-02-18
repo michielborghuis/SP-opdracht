@@ -56,11 +56,20 @@ def code_maken(kleuren):
         kleur4 = opnieuw(kleuren, kleur4, 'Voer kleur 4 in: ')
     gekozenkleuren = [kleur1, kleur2, kleur3, kleur4]
 
+    allecombos= []
+
+    for i in kleuren:
+        for x in kleuren:
+            for y in kleuren:
+                for z in kleuren:
+                    allecombos.append([i, x, y, z])
+    allecombos.sort()
+
     algoritme_kiezen = [algoritme1, algoritme2, algoritme3]
 
     eentotdrie = random.choice(algoritme_kiezen)
 
-    antwoord = eentotdrie(kleuren, gekozenkleuren, feedback)
+    antwoord = eentotdrie(gekozenkleuren, feedback, allecombos)
 
     time.sleep(3)
 
