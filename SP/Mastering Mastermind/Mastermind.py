@@ -56,9 +56,7 @@ def code_maken(kleuren):
 
     eentotdrie = random.choice(algoritme_kiezen)
 
-    #antwoord = eentotdrie(kleuren, gekozenkleuren, feedback)
-
-    antwoord = algoritme3(kleuren, gekozenkleuren, feedback)
+    antwoord = eentotdrie(kleuren, gekozenkleuren, feedback)
 
     time.sleep(3)
 
