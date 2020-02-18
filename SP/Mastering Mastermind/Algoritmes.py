@@ -1,6 +1,8 @@
 import time
 import math
 def algoritme1(alle_kleuren, geheime_code, feedback):
+    '''Dit algortime is gebaseerd op de simple strategie'''
+
     print('\nDe computer heeft gekozen voor algoritme 1.\n')
     combinaties = []
     poging = 1
@@ -36,8 +38,9 @@ def algoritme1(alle_kleuren, geheime_code, feedback):
 
 
 def algoritme2(kleuren, geheime_code, feedback):
-    print('\nDe computer heeft gekozen voor algoritme 2.\nDe computer is de code aan het raden. Even geduld aub.')
+    '''Dit algortime is gebaseerd op de worstcase strategie'''
 
+    print('\nDe computer heeft gekozen voor algoritme 2.\nDe computer is de code aan het raden. Even geduld aub.')
     poging = 1
     combinaties = []
 
@@ -110,6 +113,8 @@ def algoritme2(kleuren, geheime_code, feedback):
     return combinaties[0], poging
 
 def algoritme3(kleuren, geheime_code, feedback):
+    '''In dit algoritme pakt het algoritme niet (zoals bij de worstcase strategie) het grootste getal uit de lijst en slaat die op, maar het middelste getal'''
+
     print('\nDe computer heeft gekozen voor algoritme 3.\nDe computer is de code aan het raden. Even geduld aub.')
     poging = 0
     combinaties = []
