@@ -59,34 +59,9 @@ def algoritme2(kleuren, geheime_code, feedback):
             uitkomst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             for y in combinaties:
                 x = feedback(y,i)
-                if x == antwoorden[0]:
-                    uitkomst[0] += 1
-                elif x == antwoorden[1]:
-                    uitkomst[1] += 1
-                elif x == antwoorden[2]:
-                    uitkomst[2] += 1
-                elif x == antwoorden[3]:
-                    uitkomst[3] += 1
-                elif x == antwoorden[4]:
-                    uitkomst[4] += 1
-                elif x == antwoorden[5]:
-                    uitkomst[5] += 1
-                elif x == antwoorden[6]:
-                    uitkomst[6] += 1
-                elif x == antwoorden[7]:
-                    uitkomst[7] += 1
-                elif x == antwoorden[8]:
-                    uitkomst[8] += 1
-                elif x == antwoorden[9]:
-                    uitkomst[9] += 1
-                elif x == antwoorden[10]:
-                    uitkomst[10] += 1
-                elif x == antwoorden[11]:
-                    uitkomst[11] += 1
-                elif x == antwoorden[12]:
-                    uitkomst[12] += 1
-                elif x == antwoorden[13]:
-                    uitkomst[13] += 1
+                for z in range(0,len(uitkomst)):
+                    if x == antwoorden[z]:
+                        uitkomst[z] += 1
 
             if max(uitkomst) < bestworstcase[0]:
                 bestworstcase = max(uitkomst), i
@@ -136,34 +111,9 @@ def algoritme3(kleuren, geheime_code, feedback):
             bestcaseaantal=0
             for y in combinaties:
                 x = feedback(y, i)
-                if x == antwoorden[0]:
-                    uitkomst[0] += 1
-                elif x == antwoorden[1]:
-                    uitkomst[1] += 1
-                elif x == antwoorden[2]:
-                    uitkomst[2] += 1
-                elif x == antwoorden[3]:
-                    uitkomst[3] += 1
-                elif x == antwoorden[4]:
-                    uitkomst[4] += 1
-                elif x == antwoorden[5]:
-                    uitkomst[5] += 1
-                elif x == antwoorden[6]:
-                    uitkomst[6] += 1
-                elif x == antwoorden[7]:
-                    uitkomst[7] += 1
-                elif x == antwoorden[8]:
-                    uitkomst[8] += 1
-                elif x == antwoorden[9]:
-                    uitkomst[9] += 1
-                elif x == antwoorden[10]:
-                    uitkomst[10] += 1
-                elif x == antwoorden[11]:
-                    uitkomst[11] += 1
-                elif x == antwoorden[12]:
-                    uitkomst[12] += 1
-                elif x == antwoorden[13]:
-                    uitkomst[13] += 1
+                for z in range(0,len(uitkomst)):
+                    if x == antwoorden[z]:
+                        uitkomst[z] += 1
             uitkomst.sort()
             while 0 in uitkomst:
                 uitkomst.remove(0)
@@ -200,4 +150,4 @@ def algoritme3(kleuren, geheime_code, feedback):
 
         combinaties = opslag
         time.sleep(3)
-    return combinaties[0], poging
+    return combinaties[0], poging+1
