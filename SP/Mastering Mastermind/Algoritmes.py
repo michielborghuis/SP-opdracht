@@ -58,7 +58,7 @@ def algoritme2(kleuren, geheime_code, feedback):
         for i in combinaties:
             uitkomst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             for y in combinaties:
-                x = feedback(y,i)
+                x = feedback(y, i)
                 for z in range(0,len(uitkomst)):
                     if x == antwoorden[z]:
                         uitkomst[z] += 1
@@ -106,6 +106,7 @@ def algoritme3(kleuren, geheime_code, feedback):
         antwoorden = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0), (4, 0)]
         bestworstcase = [1000, 'combo']
         eindlijst = []
+
         for i in combinaties:
             uitkomst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             bestcaseaantal=0
@@ -117,6 +118,7 @@ def algoritme3(kleuren, geheime_code, feedback):
             uitkomst.sort()
             while 0 in uitkomst:
                 uitkomst.remove(0)
+
             if len(uitkomst) % 2 != 0:
                 middelste = int((len(uitkomst)-1)/2)
                 maxi = uitkomst[middelste]
@@ -124,10 +126,12 @@ def algoritme3(kleuren, geheime_code, feedback):
                 middelste = (len(uitkomst)-1)/2
                 mid = uitkomst[math.floor(middelste)], uitkomst[math.ceil(middelste)]
                 maxi = max(mid)
+
             if maxi <= bestworstcase[0]:
                 bestworstcase = maxi, i
                 bestcaseaantal+=1
                 eindlijst.append(i)
+
         if bestcaseaantal == len(combinaties)-1:
             for code in eindlijst:
                 if code == geheime_code:
