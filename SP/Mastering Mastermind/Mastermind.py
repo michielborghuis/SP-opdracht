@@ -12,7 +12,12 @@ def gespeeld():
         spelregels = input('Wil je de spelregels weten? J/N: ').lower()
         spelregels = opnieuw(JaOfNee, spelregels, 'Wil je de spelregels weten? J/N: ')
         if spelregels == 'j':
-            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\nEr zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\nJe hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\nAls je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\nGaat het jou lukken om de computer te verslaan?\n')
+            print('\nDit zijn de spelregels van Mastermind:\nIn dit spel is het de bedoeling dat jij een code gaat raden 
+                  of een code gaat maken. Als je de code gaat raden moet je binnen 10 pogingen de goede code (bestaande uit 4 kleuren) zien te raden.\n
+                  Er zijn in dit spel 6 verschillende kleuren, namelijk zwart, rood, groen, wit en geel.\n
+                  Je hebt in totaal 10 pogingen. Als jij de code dan nog niet hebt geraden, heb je helaas verloren.\n
+                  Als je ervoor kiest om een code te maken. Gaat de computer je code proberen te kraken in 10 pogingen.\n
+                  Gaat het jou lukken om de computer te verslaan?\n')
 
 def gamemode():
     mode = ['m','r']
@@ -63,11 +68,11 @@ def code_maken(kleuren):
             for y in kleuren:
                 for z in kleuren:
                     allecombos.append([i, x, y, z])
-    allecombos.sort()
+    allecombos.sort()   #is sort nodig?
 
     algoritme_kiezen = [algoritme1, algoritme2, algoritme3]
 
-    eentotdrie = random.choice(algoritme_kiezen)
+    eentotdrie = random.choice(algoritme_kiezen)    #mogelijkheid om te kiezen uit algoritmes
 
     antwoord = eentotdrie(gekozenkleuren, feedback, allecombos)
 
